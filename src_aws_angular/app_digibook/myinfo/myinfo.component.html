@@ -1,0 +1,296 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <!-- <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    /> -->
+    
+    <h2>CUSTOMER REGISTRATION</h2>
+    <div></div>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      <!--1. firstName -->
+      <div class="form-group">
+        <label for="firstName">FIRSTNAME</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+         value="{{ currentUser.firstName }}" />
+      </div>
+
+      <!-- 2.lastName -->
+      <div class="form-group">
+        <label for="lastName">LASTNAME</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          value="{{ currentUser.lastName }}"
+        />
+      </div>
+
+       <!-- 3.ADDRESS -->
+       <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          [(ngModel)]="form.address"
+          required
+          minlength="3"
+          maxlength="20"
+          #address="ngModel"
+        />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="  !address.hasError('required')">Address is required</div>
+
+        </div>
+      </div>
+
+
+       <!-- 4.STATE -->
+       <div class="form-group">
+        <label for="state">State</label>
+        <input
+          type="text"
+          class="form-control"
+          name="state"
+          [(ngModel)]="form.state"
+          required
+          minlength="3"
+          maxlength="20"
+          #state="ngModel"
+        />
+        <div class="alert-danger" *ngIf="state.errors && f.submitted">
+          <div *ngIf="  !state.hasError('required')">State is required</div>
+
+        </div>
+      </div>
+
+
+       <!-- 5.COUNTRY -->
+       <div class="form-group">
+        <label for="country">Country</label>
+        <input
+          type="text"
+          class="form-control"
+          name="country"
+          [(ngModel)]="form.country"
+          required
+          minlength="3"
+          maxlength="20"
+          #country="ngModel"
+        />
+        <div class="alert-danger" *ngIf="country.errors && f.submitted">
+          <div *ngIf="  !country.hasError('required')">Country is required</div>
+
+        </div>
+      </div>
+        <!-- 6.emailAddress -->
+      <div class="form-group">
+        <label for="emailAddress">emailAddress</label>
+        <input
+          type="email"
+          class="form-control"
+          name="emailAddress"
+          [(ngModel)]="form.emailAddress"
+          required
+          email
+          #emailAddress="ngModel"
+        />
+        <div class="alert-danger" *ngIf="emailAddress.errors && f.submitted">
+          <div *ngIf="emailAddress.hasError('required')">Email is required</div>
+          <div *ngIf="emailAddress.hasError('email')">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+
+       <!--7.PAN -->
+       <div class="form-group">
+        <label for="Pan">Pan Number</label>
+        <input
+          type="text"
+          class="form-control"
+          name="pan"
+          [(ngModel)]="form.pan"
+          required
+          minlength="3"
+          maxlength="20"
+          #pan="ngModel"
+        />
+        <div class="alert-danger" *ngIf="pan.errors && f.submitted">
+          <div *ngIf="  !pan.hasError('required')">Pan is required</div>
+
+        </div>
+      </div>
+
+
+
+       <!-- lastName -->
+       <div class="form-group">
+        <label for="contactNo">ContactNo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="contactNo"
+          [(ngModel)]="form.contactNo"
+          required
+          minlength="3"
+          maxlength="20"
+          #contactNo="ngModel"
+        />
+        <div class="alert-danger" *ngIf="contactNo.errors && f.submitted">
+          <div *ngIf="  !contactNo.hasError('required')">ContactNo is required</div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contactPreference">contactPreference</label>
+         <select class="form-control" name="contactPreference"
+      [(ngModel)]="form.contactPreference"
+      required
+      minlength="3"
+      maxlength="20"
+      #contactPreference="ngModel">  
+        
+        <option >EMAIL</option>  
+        <option >PHONE</option>
+    </select>  
+
+       
+    <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div>
+  </div>
+
+
+       <!-- contactPreference -->
+       <!-- <div class="form-group">
+        <label for="contactPreference">contactPreference</label>
+        <input
+          type="text"
+          class="form-control"
+          name="contactPreference"
+          [(ngModel)]="form.contactPreference"
+          required
+          minlength="3"
+          maxlength="20"
+          #contactPreference="ngModel"
+        />
+        <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+          <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+        </div>
+      </div> -->
+      <!-- <div class="form-group">
+        <label for="rolesval">role</label>
+         <select class="form-control" name="rolesval"
+      [(ngModel)]="form.rolesval"
+      required
+      minlength="3"
+      maxlength="20"
+      #rolesval="ngModel">  
+        
+        <option >admin</option>  
+        <option >user</option>
+    </select>  
+
+       
+    <div class="alert-danger" *ngIf="rolesval.errors && f.submitted">
+      <div *ngIf="  !rolesval.hasError('required')">rolesval is required</div>
+
+    </div>
+  </div> -->
+  <div class="form-group">
+    <label for="role"></label>
+    <input
+      type="hidden"
+      class="form-control"
+      name="role"
+      [(ngModel)]="form.role"
+      minlength="3"
+      maxlength="20"
+      #role="ngModel"
+    />
+    <!-- <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div> -->
+  </div>
+
+
+  <div class="form-group">
+    <label for="rolesval"></label>
+    <input
+      type="hidden"
+      class="form-control"
+      name="rolesval"
+      [(ngModel)]="form.rolesval"
+      minlength="3"
+      maxlength="20"
+      #rolesval="ngModel"
+    />
+    <!-- <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div> -->
+  </div>
+
+
+
+
+
+
+
+
+
+
+    
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.hasError('required')">Password is required</div>
+          <div *ngIf="password.hasError('minlength')">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Your registration is successful!
+      kindly login this link  <a href="/login" class="nav-link" routerLink="../login">Login</a>
+      <!-- <a href="/.../../home" class="nav-link" routerLink="home">Login</a>
+      <br>
+      <a href="/home" class="nav-link" routerLink="home">Login</a> -->
+    </div>
+  </div>
+</div>

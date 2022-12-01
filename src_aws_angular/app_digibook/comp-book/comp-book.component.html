@@ -1,0 +1,153 @@
+
+<div class="col-md-12">
+    <div class="card card-container">
+      <!-- <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      /> -->
+      <h2>ADD CUSTOMER REQUEST SERVICE</h2>
+<form>
+
+    <div class="form-group">
+        <label for="title">TITLE</label>
+     <input type="text" class="form-control" #title/>
+     <BR>
+    </div>
+    <div class="form-group">
+        <label for="title">DESCRIPTION</label>
+    <input type="text" class="form-control" #description />
+    <BR>
+    </div>
+    <!-- <div class="form-group">
+        <label for="title">STATUS</label>
+     <input type="text" class="form-control" #status />
+     <BR>
+    </div> -->
+    <div class="form-group">
+        <label for="status">STATUS</label>
+         <select class="form-control" name="status"
+      #status>  
+        <option>PENDING</option>  
+        <!-- <option disabled>CLOSED</option>
+        <option disabled>REOPEN</option> -->
+    </select>  
+    <BR>
+       
+    <!-- <div class="alert-danger" *ngIf="status.errors && f.submitted">
+      <div *ngIf="  !status.hasError('required')">status is required</div>
+
+    </div> -->
+  </div>
+    <div class="form-group" >
+        <label for="title">TARGET COMPLETED DATE</label>
+     <input type="date" class="form-control" #completedDate [min]="nowdate" data-toggle="Tooltip" title="select target completed date"/>
+     <BR>
+    </div>
+    <div class="form-group">
+        <label for="title" matTooltip="Tooltip!">COMMENTS</label>
+    <input type="text" class="form-control" #comments matTooltip="Tooltip!"/>
+    <BR></div>
+        <!-- <div matTooltip="Tooltip!"><a>Hover me</a></div> -->
+
+        <!-- <button mat-raised-button
+    matTooltip="Tooltip above the element"
+    >
+Tooltip
+</button>
+<a data-toggle="Tooltip" title="hello">ctest</a> -->
+        <!-- <div class="wifi__switcher switcher">
+            <input type="checkbox" class="input switcher--input js-checkbox" [checked]="activated" (change)="saveState($event)">
+        
+            <label matTooltipPosition="above" matTooltip="{{activated?'activated': 'not active'}}">Toggle</label>
+        
+        </div> -->
+
+    <!-- <mat-form-field>
+        <input matInput [matDatepicker] = "picker" placeholder = "Choose a date">
+        <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+     </mat-form-field> -->
+    <!-- <form [formGroup]="datepickerForm" novalidate>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                        formControlName="startDate" (dateChanged)="onDateChanged($event)"></my-date-picker>
+      other controls are here... 
+      <button (click)="showSelectedDate()">Submit</button>
+    </form>
+    
+    <p *ngIf="selectedDate">Selected Date is : {{selectedDate}}</p> -->
+
+
+    <input type="button" value="SAVE"  class = "btn btn-success" (click)="save(title.value,description.value,status.value,completedDate.value,
+    comments.value);"/>
+    <input type="button" value="BACK"  class = "btn btn-danger" (click)="back();"/>
+
+    <!-- <br>
+    <br>
+    <br>
+    <br>
+    STATUS <select class="form-control" #statusval>  
+    <option disabled>Select Status</option> 
+    <option>ALL</option>  
+    <option>PENDING</option>  
+    <option>CLOSED</option>
+    <option>REOPENED</option>
+</select>  
+<br>
+<input type="button" class = "btn btn-danger" value="SEARCH_STATUS" (click)="getSearchByStatus(statusval.value);"/>
+   
+  <br>
+  <br>
+  TITLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #titleval /><br/>
+  <input type="button" class = "btn btn-danger" value="SEARCH_TITLE" (click)="getSearchByTitle(titleval.value);"/>
+   -->
+   <!-- <input type="button" value="Update_BOOK" (click)="updateData(image.value,title.value,category.value,+price.value,auhtor.value,
+    +auhtorid.value, publisher.value,published_date.value,chapter.value,
+    active_status.value);"/> -->
+    
+    
+</form>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<!-- <button (click)="create()">AddPurcahse</button> -->
+<!-- <table class = "table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> TITLE </td>
+            <td>  DESCRIPTION  </td>
+            <td>  STATUS  </td>
+            <td>  COMPLETEDDATE(YYYY-MM-DD)  </td>
+            <td>  COMMENTS  </td>  
+            <td>  ACTIONS </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let requestval of book; let i = index;" >
+            <td> {{ requestval.id }} </td>
+            <td> {{ requestval.title }} </td>
+            <td> {{ requestval.description }} </td>
+            <td> {{ requestval.status }}</td>
+            <td> {{ requestval.completedDate }} </td>
+           
+            <td> {{ requestval.comments }} </td>
+            <td>
+                
+                <button (click)="update(requestval,i)" class = "btn btn-success" 
+                style="margin-left: 10px"> UPDATE</button>
+                <button (click) = "deleteRequest(requestval.id)" class = "btn btn-danger" 
+                style="margin-left: 10px"> DELETE</button>
+               
+                <input type="button" value="Update_BOOK" (click)="updateData(requestval.id);"/> 
+            </td>
+
+           
+        </tr>
+    </tbody>
+</table> -->
+</div>

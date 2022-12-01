@@ -1,0 +1,9 @@
+<div>
+    <h2>Data-binding demo</h2>
+    <p>Your age is {{age}}</p>
+
+    <input #fi type="number" [value]="age" (change)="update(+fi.value)" />
+
+    <button (click)="update()">Reset</button>
+
+</div>

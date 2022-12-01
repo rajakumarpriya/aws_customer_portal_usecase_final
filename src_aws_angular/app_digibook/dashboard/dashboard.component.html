@@ -1,0 +1,65 @@
+<div class="col-md-12">
+    <div class="card card-container">
+        <h2>CUSTOMER REQUEST SERVICE INFORMATIONS</h2>
+        <div class="col-md-12 app_test">
+        <!-- STATUS -->
+        <div class="col-md-6">
+         <select class="form-control" #statusval>  
+            <!-- <option>ALL</option>   -->
+            <option>PENDING</option>  
+            <option>CLOSED</option>
+            <option>REOPEN</option>
+        </select>
+        <div class="col-md-6">
+        <input type="button" class = "btn btn-danger" value="SEARCH STATUS" (click)="getSearchByStatus(statusval.value);"/>
+        </div>
+    </div>    <!-- <input type="button" value="SEARCH_BOOK" (click)="getSearchByStatus(statusval.value);"/> -->
+
+  <!-- TITLE -->
+  
+  <div class="col-md-6">
+  <input type="text" class="form-control" placeholder="Title" #titleval />
+  </div>
+  <div class="col-md-6">
+  <input type="button" class = "btn btn-danger" value="SEARCH TITLE"  (click)="getSearchByTitle(titleval.value,statusval.value);"/>
+  </div>
+ 
+</div>
+<div class="col-md-12 app_test"><hr>
+    
+    <input type="button" class = "btn btn-success" value="ADD REQUEST"  (click)="getAddRequest();"/></div>
+<!-- <button (click)="create()">AddPurcahse</button> -->
+<table class = "table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>  ID </td>
+            <td>  TITLE  </td>
+            <td>  DESCRIPTION  </td>
+            <td>  STATUS  </td>
+            <td>  TARGET COMPLETED DATE  </td>
+            <td>  COMMENTS  </td>  
+            <td>  ACTIONS </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let requestval of book; let i = index;" >
+            <td> {{ requestval.id }} </td>
+            <td> {{ requestval.title }} </td>
+            <td> {{ requestval.description }} </td>
+            <td>{{ requestval.status }}</td>
+            <td> {{ requestval.completedDate }} </td>
+            <td> {{ requestval.comments }} </td>
+            <td>
+               
+           
+                <button (click)="update(requestval,i)" class = "btn btn-primary" 
+                style="margin-left: 10px"> UPDATE</button>
+
+                <button (click) = "deleteRequest(requestval.id)" class = "btn btn-danger" 
+                style="margin-left: 10px"> DELETE</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,377 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <!-- <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    /> -->
+    <!--   //[formGroup]="pwForm" -->
+    <h2>CUSTOMER REGISTRATION</h2>
+    <form
+      *ngIf="!isSuccessful" 
+    
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      <!--1. firstName -->
+      <div class="form-group">
+        <label for="firstName">FIRSTNAME</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="form.firstName"
+          required
+          minlength="3"
+          maxlength="20"
+          #firstName="ngModel"
+        />
+
+        
+        <div class="alert alert-danger" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.hasError('required')">firstName is required</div>
+          <!-- <div *ngIf="username.errors.minlength">
+            Username must be at least 3 characters
+          </div> -->
+          <div *ngIf = "firstName.hasError('minlength')" 
+          class ="alert alert-danger">
+            firstName should contain 3 characters
+          </div> 
+          <div *ngIf="firstName.hasError('maxlength')">
+            firstName must be at most 20 characters
+          </div>
+        </div>
+      </div>
+
+      <!-- 2.lastName -->
+      <div class="form-group">
+        <label for="lastName">LASTNAME</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="form.lastName"
+          required
+          maxlength="20"
+          #lastName="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.hasError('required')">lastName is required</div>
+        </div>
+      </div>
+
+       <!-- 3.ADDRESS -->
+       <div class="form-group">
+        <label for="address">ADDRESS</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          [(ngModel)]="form.address"
+          required
+          minlength="3"
+          maxlength="20"
+          #address="ngModel"
+        />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="  !address.hasError('required')">Address is required</div>
+
+        </div>
+      </div>
+
+
+       <!-- 4.STATE -->
+      
+
+
+       <!-- 5.COUNTRY -->
+       <div class="form-group">
+        <label for="country">COUNTRY</label>
+        <select placeholder="Phantasyland" (change)="changeCountry(country.value)"
+        class="form-control"
+        name="country"
+        [(ngModel)]="form.country"
+        #country="ngModel">
+          <option *ngFor ="let count of countryList">{{count.name}} </option>
+      </select>
+       
+        <div class="alert alert-danger" *ngIf="country.errors && f.submitted">
+          <div *ngIf="country.hasError('required')">Country is required</div>
+
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="state">STATE</label>
+
+        
+  <div title="Please select the city that the customer is primarily to be served from.">
+    <select placeholder="Anycity"  class="form-control"
+    name="state"
+    [(ngModel)]="form.state"
+    required
+    #state="ngModel">
+          <option *ngFor ="let city of cities">{{city}} </option>
+    </select>
+  </div>
+        <!-- <input
+          type="text"
+          class="form-control"
+          name="state"
+          [(ngModel)]="form.state"
+          required
+          minlength="3"
+          maxlength="20"
+          #state="ngModel"
+        /> -->
+        <div class="alert alert-danger" *ngIf="state.errors && f.submitted">
+          <div *ngIf="state.hasError('required')">State is required</div>
+
+        </div>
+      </div>
+
+      <!-- <label>Country</label>
+  <div  title="Please select the country that the customer will primarily be served from">
+    <select placeholder="Phantasyland" #mySelect (change)="changeCountry(mySelect.value)">
+          <option *ngFor ="let count of countryList">{{count.name}} </option>
+      </select>
+  </div> -->
+
+     
+
+      
+        <!-- 6.emailAddress -->
+      <div class="form-group">
+        <label for="emailAddress">EMAILADDRESS</label>
+        <input
+          type="email"
+          class="form-control"
+          name="emailAddress"
+          [(ngModel)]="form.emailAddress"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+          required
+          email
+          #emailAddress="ngModel"
+        />
+        <div class="alert alert-danger" *ngIf="emailAddress.errors && f.submitted">
+          <div *ngIf="emailAddress.hasError('required')">Email is required</div>
+          <div *ngIf="emailAddress.hasError('email')">
+            Email must be a valid email address
+          </div>
+          <p *ngIf="emailAddress.hasError('pattern')">
+            This is not a valid Email!!!
+          </p>
+        </div>
+      </div>
+
+
+       <!--7.PAN    (input)="alphanumbersOnlyValidator($event)" -->
+       <div class="form-group">
+        <label for="Pan">PAN NUMBER</label>
+        <input
+          type="text"
+          class="form-control"
+          name="pan"
+          [(ngModel)]="form.pan"
+          required
+          maxlength="10"
+          #pan="ngModel"
+          (keypress)="keyPressAlphaNumeric($event)"
+         
+        />
+        <div class="alert alert-danger" *ngIf="pan.errors && f.submitted">
+          <div *ngIf="pan.hasError('required')">Pan is required</div>
+
+        </div>
+      </div>
+
+
+
+       <!-- lastName -->
+       <div class="form-group">
+        <label for="contactNo">CONTACTNO</label>
+        <input
+          type="text"
+          class="form-control"
+          name="contactNo"
+          [(ngModel)]="form.contactNo"
+          required
+        
+          maxlength="10"
+          #contactNo="ngModel"
+          (input)="numbersOnlyValidator($event)"
+          
+        />
+        <div class="alert alert-danger" *ngIf="contactNo.errors && f.submitted">
+          <div *ngIf="contactNo.hasError('required')">ContactNo is required</div>
+          
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contactPreference">CONTACTPREFERENCE</label>
+         <select class="form-control" name="contactPreference"
+      [(ngModel)]="form.contactPreference"
+      required
+      minlength="3"
+      maxlength="20"
+      #contactPreference="ngModel">  
+        
+        <!-- <option >EMAIL</option>  
+        <option >PHONE</option> -->
+        <option *ngFor="let opt of listOfOptions" [value]="opt">
+            
+
+          {{opt}}</option>
+    </select>  
+
+       
+    <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div>
+  </div>
+
+
+  
+  
+  
+  
+  
+
+ 
+
+
+       <!-- contactPreference -->
+       <!-- <div class="form-group">
+        <label for="contactPreference">contactPreference</label>
+        <input
+          type="text"
+          class="form-control"
+          name="contactPreference"
+          [(ngModel)]="form.contactPreference"
+          required
+          minlength="3"
+          maxlength="20"
+          #contactPreference="ngModel"
+        />
+        <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+          <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+        </div>
+      </div> -->
+      <!-- <div class="form-group">
+        <label for="rolesval">role</label>
+         <select class="form-control" name="rolesval"
+      [(ngModel)]="form.rolesval"
+      required
+      minlength="3"
+      maxlength="20"
+      #rolesval="ngModel">  
+        
+        <option >admin</option>  
+        <option >user</option>
+    </select>  
+
+       
+    <div class="alert-danger" *ngIf="rolesval.errors && f.submitted">
+      <div *ngIf="  !rolesval.hasError('required')">rolesval is required</div>
+
+    </div>
+  </div> -->
+  <div class="form-group">
+    <label for="role"></label>
+    <input
+      type="hidden"
+      class="form-control"
+      name="role"
+      [(ngModel)]="form.role"
+      minlength="3"
+      maxlength="20"
+      #role="ngModel"
+    />
+    <!-- <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div> -->
+  </div>
+
+
+  <div class="form-group">
+    <label for="rolesval"></label>
+    <input
+      type="hidden"
+      class="form-control"
+      name="rolesval"
+      [(ngModel)]="form.rolesval"
+      minlength="3"
+      maxlength="20"
+      #rolesval="ngModel"
+    />
+    <!-- <div class="alert-danger" *ngIf="contactPreference.errors && f.submitted">
+      <div *ngIf="  !contactPreference.hasError('required')">contactPreference is required</div>
+
+    </div> -->
+  </div>
+
+
+
+
+
+
+
+
+
+
+    
+      <div class="form-group">
+        <label for="password">PASSWORD</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password" 
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel" 
+        />
+        <div class="alert alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.hasError('required')">Password is required</div>
+          <div *ngIf="password.hasError('minlength')">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">CONFIRM PASSWORD</label>
+        <input type="password" [(ngModel)]="form.confirmpassword" name="confirmpassword" 
+            class="form-control" required #confirmpassword="ngModel" pattern="{{ password.value }}" />
+        <div *ngIf=" confirmpassword.invalid && (f.submitted || confirmpassword.touched)" class="alert alert-danger">
+            <div *ngIf="confirmpassword.hasError('required')"> Confirm password is required. </div>
+            <div *ngIf="confirmpassword.hasError('pattern')"> Password & Confirm Password does not match.</div>
+        </div>
+    </div>
+      <!-- <input type="password" formControlName="check" /> -->
+      
+
+      <br>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">SIGN UP</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+     <h1> Your registration is successful!</h1><br><br>
+     <span> <h3>kindly login to access this...<a href="/login" class="nav-link" routerLink="../login">Login</a></h3></span>
+      <!-- <a href="/.../../home" class="nav-link" routerLink="home">Login</a>
+      <br>
+      <a href="/home" class="nav-link" routerLink="home">Login</a> -->
+    </div>
+  </div>
+</div>

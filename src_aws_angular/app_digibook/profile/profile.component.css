@@ -1,0 +1,21 @@
+.container {
+    background: white;
+    margin-top: 17px;
+    padding-top: 19px;
+    padding-bottom: 19px;
+}
+.card.card-container {
+   /* // width: 50%; */
+    padding: 10px;
+}
+.col-md-12 {
+    /* width: 50%; */
+    margin: 0 auto;
+    width: 50%;
+}
+.col-md-12 {
+    MARGIN-TOP: 30PX;
+}
+input.btn.btn-danger {
+    margin-left: 10px;
+}

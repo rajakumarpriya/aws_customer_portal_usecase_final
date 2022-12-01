@@ -1,0 +1,157 @@
+<!-- <div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="jumbotron">
+    <hr>
+    <h3>
+      <strong>{{ currentUser.username }} {{ this.test.comments}}</strong> Profile 
+    </h3>
+    <hr>
+  </header>
+   <p>
+    <strong>Token:</strong>
+    {{ currentUser.accessToken.substring(0, 20) }} ...
+    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+  </p> -->
+  <!-- <p>
+    <strong>User Email:</strong>
+   
+    
+  </p>
+  <td>{{test1
+  }}</td> -->
+  <!-- <td>{{weather[0].sys.country}}</td>
+  <td>{{weather[0].main | json}}</td> -->
+  <!-- <select 
+        >
+    <option *ngFor="let book1 of book" 
+            [value]="book1">
+        {{book1}}
+    </option>
+</select> -->
+  <!-- <strong>User Roles:</strong>
+  <ul> -->
+    <!-- <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li> -->
+    <!-- <li *ngFor="let role1 of book">
+      {{ role1.id }}
+    </li> -->
+  <!-- </ul>
+</div> --> 
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>
+
+
+<div class="col-md-12">
+  <div class="card card-container">
+    <!-- <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    /> -->
+    
+    <h2>CUSTOMER UPDATE INFO</h2>
+
+    <form
+      
+      name="form"
+      >
+      <!--1. firstName -->
+      <br>
+      <div class="form-group">
+         <input type="text" #id hidden class="form-control" value="{{ test7 }}"/><br/>
+      </div>
+
+      <div class="form-group">
+      FIRSTNAME <input type="text" #firstName  class="form-control"  value="{{ test1}}"/><br/>
+      </div>
+      <div class="form-group">
+      LASTNAME <input type="text" #lastName  class="form-control"  value="{{ test2 }}"/><br/>
+      </div>
+
+      <div class="form-group">
+      ADDRESS <input type="text" #address  class="form-control" value="{{ test8 }}"/><br/>
+      </div>
+
+     
+      <div class="form-group">
+      COUNTRY 
+      <!-- <input type="text" #country  class="form-control" value="{{ test5 }}"/> -->
+      <br/>
+      <select placeholder="country"  class="form-control" #country>
+        <option *ngFor ="let count of countryList" [selected]="count.name == test5">{{count.name}}</option>
+        </select>
+        <br/>
+      </div>
+      <div class="form-group">
+        STATE <input type="text" #state  class="form-control" value="{{ test4 }}"/>
+        <!-- STATE
+        <select placeholder="State"  class="form-control"
+        
+        #state>
+              <option *ngFor ="let city of cities" [selected]="city == test4">{{city}} </option>
+        </select><br/> -->
+        </div>
+        <br>
+      <div class="form-group">
+        EMAILADDRESS <input type="email" disabled #emailaddress  class="form-control" value="{{ test3 }}"/><br/>
+      </div>
+      <div class="form-group">
+        PAN NUMBER <input type="text" maxlength="10" #pan  class="form-control" value="{{ test6 }}"  (keypress)="keyPressAlphaNumeric($event)"/><br/>
+      </div>
+      <div class="form-group">
+        CONTACTNO <input type="text" #contactNo  class="form-control" (input)="numbersOnlyValidator($event)"
+        maxlength="10" value="{{ test9 }}"/><br/>
+      </div>
+      <div class="form-group">
+        <label for="contactPreference">CONTACTPREFERENCE</label>
+         <select class="form-control" #contactPreference>  
+         
+          <option *ngFor="let opt of listOfOptions" [value]="opt" [selected]="opt == test10" >
+        
+
+            {{opt}}</option>
+        <!-- <option >{{test10 }}</option>  -->
+        <!-- <option selected
+          ng-repeat="item in items"
+          value="{{test10 }}">
+          {{test10 }}
+  </option> -->
+    </select>  
+
+       
+    
+  </div>
+
+
+  <!-- <select class="form-control" name="contactPreference"
+  [(ngModel)]="form.contactPreference"
+  required
+  minlength="3"
+  maxlength="20"
+  #contactPreference="ngModel">  
+    
+   
+    <option *ngFor="let opt of listOfOptions" [value]="opt">
+        
+
+      {{opt}}</option>
+</select>   -->
+
+      <br>
+      <div class="form-group">
+        <button class="btn btn-success btn-block" (click)="updateInfo(id.value,firstName.value,lastName.value,
+        address.value,state.value,country.value,pan.value,contactNo.value,emailaddress.value,
+        contactPreference.value)">UPDATE INFO</button>
+
+        <input type="button" value="BACK"  class = "btn btn-danger" (click)="back();"/>
+      </div>
+
+      
+    </form>
+
+    
+  </div>
+</div>
+
